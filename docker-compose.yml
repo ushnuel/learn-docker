@@ -1,0 +1,14 @@
+version: "3"
+services:
+  redis:
+    image: "redis:latest"
+    restart: always
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - /code/node_modules
+      - ./:/code
+    ports:
+      - 3000:3000
